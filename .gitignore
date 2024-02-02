@@ -1,0 +1,6 @@
+# Project exclude paths
+/.dart_tool/
+/example/.dart_tool/
+/example/build/
+/r_lib/.dart_tool/
+/r_lib/build/

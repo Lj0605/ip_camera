@@ -1,0 +1,2 @@
+rootProject.name = 'vsdk'
+include ':vp_log',':vp_p2p',':vp_play'

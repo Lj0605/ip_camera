@@ -1,0 +1,54 @@
+group 'com.example.vsdk'
+version '1.0'
+
+buildscript {
+    ext.kotlin_version = '1.5.31'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 19
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    ///implementation files('libs/bugly-4.1.9.2.aar')
+    implementation project(path: ':vsdk:vp_log')
+    implementation project(path: ':vsdk:vp_p2p')
+    implementation project(path: ':vsdk:vp_play')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    ///compileOnly fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    ///provided files('libs/app_player-1.0.0.0.aar')
+/*    implementation (name:'vp_log-1.0.0.0',ext:'ext')
+    implementation (name:'app_p2p_api-1.0.0.0',ext:'ext')
+    implementation (name:'libs/app_player-1.0.0.0',ext:'ext')*/
+}

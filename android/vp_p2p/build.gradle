@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('libs/app_p2p_api-1.0.0.0.aar'))
